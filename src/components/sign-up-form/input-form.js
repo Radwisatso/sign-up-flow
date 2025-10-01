@@ -30,7 +30,7 @@ export default function InputForm({
                 />
                 {errorMessage && <p className={styles['input-error-message']}>{errorMessage}</p>}
                 {isPasswordField &&
-                    <button onClick={() => setIsPasswordVisible(!isPasswordVisible)} className={styles['password-visibility-toggle']} type='button'>
+                    <button tabIndex={-1} onClick={() => setIsPasswordVisible(!isPasswordVisible)} className={styles['password-visibility-toggle']} type='button'>
                         {isPasswordVisible ?
                             <Image src="/hide.png" width="20" height="20" alt='hide password' />
                             :
