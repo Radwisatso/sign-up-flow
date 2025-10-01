@@ -4,6 +4,7 @@ import Container from "@/components/container";
 import SignUpForm from "@/components/sign-up-form";
 import { useState } from "react";
 import { usePopup } from "@/contexts/popup";
+import Credit from "@/components/credit";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -14,9 +15,11 @@ const poppins = Poppins({
 export default function Home() {
 
   const [inputForm, setInputForm] = useState({
-    username: "",
+    fullName: "",
+    email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    isChecked: false
   });
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -28,12 +31,37 @@ export default function Home() {
     e.preventDefault();
     setIsLoading(true);
     setErrors({});
-    triggerPopup("Welcome to the Sign Up Page!")
 
 
     try {
+      let inputErrors = {};
+
+      if (!inputForm.fullName) {
+        inputErrors.fullName = "Full name is required";
+      }
+
+      if (!inputForm.email) {
+        inputErrors.email = "Email is required";
+      } else if (!/\S+@\S+\.\S+/.test(inputForm.email)) {
+        inputErrors.email = "Email address is invalid";
+      }
+
+      if (!inputForm.password) {
+        inputErrors.password = "Password is required";
+      }
+
       if (inputForm.password !== inputForm.confirmPassword) {
-        setErrors({ confirmPassword: "Passwords do not match" });
+        inputErrors.confirmPassword = "Passwords do not match";
+      }
+
+      if (inputForm.isChecked === false) {
+        inputErrors.terms = "You must agree to the terms and services";
+      }
+
+      console.log(inputForm)
+      if (Object.keys(inputErrors).length > 0) {
+        triggerPopup("Please input all required fields correctly.")
+        setErrors(inputErrors);
         setIsLoading(false);
         return;
       }
@@ -41,10 +69,12 @@ export default function Home() {
       // Simulate an API call
       setTimeout(() => {
         setIsLoading(false);
+        triggerPopup("Successfully signed up!")
         // Here you can handle success or error responses
       }, 2000);
     } catch (error) {
-
+      setErrors({})
+      setIsLoading(false); // Only set to false on error
     }
   }
 
@@ -57,11 +87,10 @@ export default function Home() {
           inputForm={inputForm}
           setInputForm={setInputForm}
           onSubmit={handleSubmit}
+          isLoading={isLoading}
+          errors={errors}
         />
-        <div>
-          <a href="https://www.flaticon.com/free-icons/eye" title="eye icons">Eye icons created by Kiranshastry - Flaticon</a>
-          <a href="https://www.flaticon.com/free-icons/password" title="password icons">Password icons created by th studio - Flaticon</a>
-        </div>
+        <Credit />
       </Container>
 
     </main>

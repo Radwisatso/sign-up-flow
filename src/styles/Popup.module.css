@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+.popup {
+  position: fixed;
+  font-family: "Poppins", sans-serif;
+  top: 20px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation-name: slideInFromRight; /* Name of the animation */
+  animation-duration: 1s; /* How long the animation takes */
+  animation-timing-function: ease-out; /* Speed curve (optional) */
+  animation-fill-mode: forwards; /* Keep the final state after animation */
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%); /* Start completely off-screen to the left */
+  }
+  to {
+    transform: translateX(0); /* End at its original position */
+  }
+}

@@ -7,7 +7,8 @@ export default function InputForm({
     type = "text",
     placeholder = "insert placeholder here",
     value = "",
-    onChange
+    onChange,
+    errorMessage = ""
 }) {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -27,6 +28,7 @@ export default function InputForm({
                     value={value}
                     onChange={onChange}
                 />
+                {errorMessage && <p className={styles['input-error-message']}>{errorMessage}</p>}
                 {isPasswordField &&
                     <button onClick={() => setIsPasswordVisible(!isPasswordVisible)} className={styles['password-visibility-toggle']} type='button'>
                         {isPasswordVisible ?
