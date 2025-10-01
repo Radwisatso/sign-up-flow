@@ -92,7 +92,6 @@ export default function Home() {
         />
         <Credit />
       </Container>
-
     </main>
   );
 }
