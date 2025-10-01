@@ -48,7 +48,6 @@ export default function SignUpForm({ inputForm, setInputForm, onSubmit, isLoadin
                     errorMessage={errors.confirmPassword}
                 />
                 <Checkbox
-
                     checked={inputForm.isChecked}
                     onChange={checked => setInputForm((prev) => {
                         return { ...prev, isChecked: checked }
