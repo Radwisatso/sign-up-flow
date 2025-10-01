@@ -1,4 +1,8 @@
 * {
   font-family: var(--font-poppins);
+}
+
+html,
+body {
   background-color: #e4d9e7;
 }

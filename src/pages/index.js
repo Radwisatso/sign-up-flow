@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Container from "@/components/container";
+import SignUpForm from "@/components/sign-up-form";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -14,18 +15,7 @@ export default function Home() {
       height: "100vh",
     }} className={`${styles.main} ${poppins.variable}`}>
       <Container>
-        <div>
-          <h1>Sign Up Flow</h1>
-          <form>
-            <input type="email" placeholder="Email" required />
-            <br />
-            <input type="password" placeholder="Password" required />
-            <br />
-            <input type="password" placeholder="Confirm Password" required />
-            <br />
-            <button type="submit">Sign Up</button>
-          </form>
-        </div>
+        <SignUpForm />
       </Container>
     </main>
   );
