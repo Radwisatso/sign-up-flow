@@ -28,7 +28,7 @@ export default function Home() {
   const router = useRouter();
 
 
-
+  // Handle form submission
   async function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -38,6 +38,7 @@ export default function Home() {
     try {
       let inputErrors = {};
 
+      // Validation checks
       if (!inputForm.fullName) {
         inputErrors.fullName = "Full name is required";
       }
@@ -60,7 +61,7 @@ export default function Home() {
         inputErrors.terms = "You must agree to the terms and services";
       }
 
-      console.log(inputForm)
+      // If there are any errors, set them and stop the submission
       if (Object.keys(inputErrors).length > 0) {
         triggerPopup("Please input all required fields correctly.")
         setErrors(inputErrors);
