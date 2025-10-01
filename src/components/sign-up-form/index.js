@@ -2,11 +2,11 @@ import styles from '../../styles/SignUpForm.module.css';
 import InputForm from './input-form';
 import SubmitButton from './submit-button';
 
-export default function SignUpForm({ inputForm, setInputForm }) {
+export default function SignUpForm({ inputForm, setInputForm, onSubmit }) {
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Sign Up</h1>
-            <form>
+            <form onSubmit={onSubmit}>
                 <InputForm
                     value={inputForm.username}
                     onChange={e => setInputForm((prev) => {

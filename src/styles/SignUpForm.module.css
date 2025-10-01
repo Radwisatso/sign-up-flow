@@ -61,6 +61,7 @@
 
 .password-visibility-toggle {
   position: absolute;
+  cursor: pointer;
   top: 0.6rem;
   right: 0.5rem;
   background: white;
