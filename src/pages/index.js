@@ -5,6 +5,7 @@ import SignUpForm from "@/components/sign-up-form";
 import { useState } from "react";
 import { usePopup } from "@/contexts/popup";
 import Credit from "@/components/credit";
+import { useRouter } from "next/router";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -24,6 +25,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const { triggerPopup } = usePopup()
+  const router = useRouter();
 
 
 
@@ -71,6 +73,7 @@ export default function Home() {
         setIsLoading(false);
         triggerPopup("Successfully signed up!")
         // Here you can handle success or error responses
+        router.push('/success-screen');
       }, 2000);
     } catch (error) {
       setErrors({})
